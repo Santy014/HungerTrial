@@ -687,10 +687,10 @@ PlayerSettings:
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
   enableDirectStorage: 0
-  cloudProjectId: c8dc8deb-29df-45c9-950a-9b2691436d49
+  cloudProjectId: 8eb8a319-9a3e-43ca-ba0d-3a8458fedbb1
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: My project (2)
+  projectName: HungerTrials
   organizationId: santymartin014
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
