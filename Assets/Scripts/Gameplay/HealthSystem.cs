@@ -11,28 +11,44 @@ public class HealthSystem : MonoBehaviour
     private bool invulnerable = false;
     public System.Action OnDeath;
     public TextMeshProUGUI HPText;
+    private AudioSource audioSource;
+    public AudioClip hitSound;      
+    public AudioClip deathSound;
+    
     private void Start() 
     { 
         currentHP = maxHP;
         UpdateHPText();  
+        audioSource = GetComponent<AudioSource>();
     }
     
     public void TakeDamage(int damage) 
     { 
-        if (invulnerable == true)
+        if (invulnerable == true || currentHP <= 0)
             return;
         
-        currentHP -= damage;   
+        currentHP -= damage;  
+        
+        // Reproduce sonido de golpe
+        if (hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
+        
         UpdateHPText();
 
         if (currentHP <= 0)
         {
+            // Reproduce sonido de muerte
+            if (deathSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(deathSound);
+            }
             OnDeath?.Invoke();
-            Destroy(gameObject);
+            Destroy(gameObject, 0.5f);
             return;  
         }
         
-        // Si sobrevive se vuelve invulnerable
         StartCoroutine(IFrames());
     }
     
@@ -41,7 +57,6 @@ public class HealthSystem : MonoBehaviour
         invulnerable = true;
         float elapsed = 0f;
         
-        // Mientras tiempo < invulnDuration
         while (elapsed < invulnDuration)
         {
             sprite.enabled = !sprite.enabled;
