@@ -27,8 +27,8 @@ Derrotar al jefe antes de que te derrote a ti.
 - 3 capítulos con dificultad creciente
 
 ## Plataforma
-- Windows PC / WebGL
-
+- Windows PC
+  
 ## Tecnología
 - Unity
 - C#
